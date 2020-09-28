@@ -1,0 +1,78 @@
+<div class="row m-t-m">
+    <div class="col-xs-12">
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="board">
+                <ng-container *ngFor="let i of [0, 3, 6]">
+                    <div class="row">
+                        <div class="col-xs-4 cell cell--{{j + i }}"
+                            [ngClass]="{'cursor-pointer': !isGameOver, 'blue': winner?.cells?.includes(j + i)}"
+                            (click)="onMove(j + i)"
+                            *ngFor="let j of [0, 1, 2]">{{board[j + i]}}
+
+
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-center flex-direction-column m-t-xl"
+            *ngIf="isGameOver">
+            <div class="text-xxl semi-bold">Game Mode:</div>
+            <div class="d-flex m-t-m">
+                <div class="m-r-xl d-flex align-items-center justify-content-center flex-direction-column">
+                    <i class="fas fa-user fa-4x cursor-pointer hover-color-blue"
+                        (click)="OnStartGameHuman()"></i>
+                    <div class="m-t-s semi-bold text-l">Multi Player</div>
+                </div>
+                <div class="d-flex align-items-center justify-content-center flex-direction-column">
+                    <i class="fas fa-robot fa-4x cursor-pointer hover-color-blue"
+                        (click)="OnStartGameAi()"></i>
+                    <div class="m-t-s semi-bold text-l">Single Player</div>
+                </div>
+            </div>
+        </div>
+        <div class="text-xl semi-bold m-t-l d-flex align-items-center justify-content-center blue"
+            *ngIf="winner">
+            {{winner?.text}}
+        </div>
+
+
+
+
+        <button (click)="newGame()"
+            class="fifth - btn"> New Game </button>
+
+
+        <div *ngIf="board"
+            class="form__group field">
+            <input [(ngModel)]="name1"
+                type="input"
+                class="form__field"
+                placeholder="Name"
+                name="name1"
+                id='name1'
+                required />
+            <label for="name"
+                class="form__label">{{humanPlayer}} :</label>
+        </div>
+
+
+        <div class="form__group field">
+            <input [(ngModel)]="name2"
+                type="input"
+                class="form__field"
+                placeholder="Name"
+                name="name"
+                id='name2'
+                required />
+            <label for="name"
+                class="form__label">{{humanPlayer2}} :</label>
+        </div>
+
+
+        <app-messages></app-messages>
+
+
+
+    </div>
+</div>

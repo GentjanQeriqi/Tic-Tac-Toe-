@@ -1,0 +1,14 @@
+<div *ngIf="messageService.messages.length">
+
+  <h2>Messages</h2>
+  <button class="clear"
+    (click)="messageService.clear()">clear</button>
+
+  <ul>
+    <div class="btn-group">
+      <button *ngFor='let message of messageService.messages let i = index'
+        (click)="game.callBack(i)"> {{message}}</button>
+    </div>
+
+  </ul>
+</div>

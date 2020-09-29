@@ -55,9 +55,7 @@ export class GameComponent implements OnInit {
   }
 
   OnStartGameHuman() {
-
     this.initBoard();
-
     this.humanPlayer = 'X';
     this.humanPlayer2 = 'O';
     this.mode = 0;
